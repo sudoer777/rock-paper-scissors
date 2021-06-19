@@ -16,17 +16,21 @@ function computerPlay() {
 function playRound(playerSelection, computerSelection)
 {
     /*
-    Change playerSelection and computerSelection to all lowercase and capitalize first letter
+    Change playerSelection and computerSelection to all lowercase and capitalize
+            first letter
     Check if playerSelection and computerSelection are valid values
     Compare, and return who won
     */
 
-    playerSelection = playerSelection[0].toUpperCase() + playerSelection.substring(1).toLowerCase();
-    computerSelection = computerSelection[0].toUpperCase() + computerSelection.substring(1).toLowerCase();
+    playerSelection = playerSelection[0].toUpperCase() +
+            playerSelection.substring(1).toLowerCase();
+    computerSelection = computerSelection[0].toUpperCase() +
+            computerSelection.substring(1).toLowerCase();
 
     // Check for invalid value
-    if ((playerSelection != "Rock" && playerSelection != "Paper" && playerSelection != "Scissors")
-                || (computerSelection != "Rock" && computerSelection != "Paper" && computerSelection != "Scissors")) {
+    if ((playerSelection != "Rock" && playerSelection != "Paper" &&
+            playerSelection != "Scissors") || (computerSelection != "Rock" &&
+            computerSelection != "Paper" && computerSelection != "Scissors")) {
         return "Error: invalid selection!";
     }
 
@@ -35,13 +39,14 @@ function playRound(playerSelection, computerSelection)
 
     let playerWins = false;
     // Check if player wins
-    if((playerSelection == "Rock" && computerSelection == "Scissors")
-                || (playerSelection == "Paper" && computerSelection == "Rock")
-                || (playerSelection == "Scissors" && computerSelection == "Paper"))
+    if((playerSelection == "Rock" && computerSelection == "Scissors") ||
+            (playerSelection == "Paper" && computerSelection == "Rock") ||
+            (playerSelection == "Scissors" && computerSelection == "Paper"))
         playerWins = true;
 
     // Return end game result
-    if(playerWins) return "You Win! " + playerSelection + " beats " + computerSelection;
+    if(playerWins)
+        return "You Win! " + playerSelection + " beats " + computerSelection;
     else return "You Lose! " + computerSelection + " beats " + playerSelection;
 }
 
@@ -60,9 +65,12 @@ function game() {
     let playerScore = 0;
     let computerScore = 0;
     while(i < 5) {
-        let playerValue = prompt("Choose your weapon (rock, paper, scissors):").toLowerCase();
-        while(playerValue != "rock" && playerValue != "paper" && playerValue != "scissors")
-            playerValue = prompt("Invalid option! Choose your weapon (rock, paper, scissors):").toLowerCase();
+        let playerValue = prompt("Choose your weapon (rock, paper, scissors):").
+                toLowerCase();
+        while(playerValue != "rock" && playerValue != "paper" &&
+                playerValue != "scissors")
+            playerValue = prompt("Invalid option! Choose your weapon " +
+                    "(rock, paper, scissors):").toLowerCase();
         
         let result = (playRound(playerValue, computerPlay()));
         console.log(result);
@@ -75,9 +83,15 @@ function game() {
 
     // Display winner
     let winnerMessage;
-    if(playerScore > computerScore) winnerMessage = "You win with a score of " + playerScore + " to " + computerScore + "!";
-    else if(playerScore < computerScore) winnerMessage = "You lose with a score of " + playerScore + " to " + computerScore + ".";
-    else winnerMessage = "You tie with a score of " + playerScore + " to " + computerScore + ".";
+    if(playerScore > computerScore)
+        winnerMessage = "You win with a score of " + playerScore +
+                " to " + computerScore + "!";
+    else if(playerScore < computerScore)
+        winnerMessage = "You lose with a score of " + playerScore + " to " +
+                computerScore + ".";
+    else
+        winnerMessage = "You tie with a score of " + playerScore + " to " +
+                computerScore + ".";
 
     console.log(winnerMessage);
     alert(winnerMessage);
