@@ -50,6 +50,81 @@ function playRound(playerSelection, computerSelection)
     else return "You Lose! " + computerSelection + " beats " + playerSelection;
 }
 
+
+
+// Setup game
+let playerScore = 0;
+let computerScore = 0;
+
+// Display scores
+const rpsScoresDiv = document.getElementById('rps-scores');
+
+const rpsPlayerScore =  document.getElementById('rps-player-score');
+const rpsComputerScore = document.getElementById('rps-computer-score');
+
+rpsPlayerScore.textContent = playerScore;
+rpsComputerScore.textContent = computerScore;
+
+
+
+// Result div
+const rpsResultDiv = document.getElementById('rps-result');
+
+// Winner div
+const rpsWinnerDiv = document.getElementById('rps-winner');
+
+
+// Button event listeners
+function rpsButtonClicked(e) {
+    let playerSelection = this.id;
+    let computerSelection = computerPlay();
+    const result = playRound(playerSelection,computerSelection);
+    rpsResultDiv.textContent = result;
+    rpsResultDiv.style.visibility = "visible";
+
+    // Color selected buttons
+    clearButtons();
+
+    this.classList.add("button-selected");
+    const computerButton = document.getElementById(`computer-${computerSelection.toLowerCase()}`)
+    computerButton.classList.add("button-selected");
+
+    if(result.indexOf("You Win! ") != -1) playerScore++;
+    if(result.indexOf("You Lose! ") != -1) computerScore++;
+
+    rpsPlayerScore.textContent = playerScore;
+    rpsComputerScore.textContent = computerScore;
+
+    if(playerScore >= 5 || computerScore >= 5) gameEnd();
+}
+
+function clearButtons() {
+    rpsButtons.forEach(button => {
+        button.classList.remove("button-selected");
+});
+}
+
+// End game when player wins
+function gameEnd() {
+    if(playerScore >= 5) rpsWinnerDiv.textContent = "You Win!";
+    else rpsWinnerDiv.textContent = "You Lose :(";
+    rpsWinnerDiv.style.visibility = "visible";
+
+    rpsButtons.forEach(button => {
+        button.disabled = true;
+    });
+}
+
+
+const rpsDiv = document.getElementById("rps-div");
+
+const rpsButtons = rpsDiv.querySelectorAll("button");
+rpsButtons.forEach(button => {
+    button.addEventListener('click', rpsButtonClicked);
+});
+
+
+/*
 function game() {
     /*
     PURPOSE: Plays five rounds of RPS
@@ -60,7 +135,7 @@ function game() {
             If it is, run game and output result
             If not, output an error and restart
     */
-
+/*
     let i = 0;
     let playerScore = 0;
     let computerScore = 0;
@@ -96,3 +171,4 @@ function game() {
     console.log(winnerMessage);
     alert(winnerMessage);
 }
+*/

@@ -2,9 +2,32 @@
 <html>
     <head>
         <title>Rock Paper Scissors</title>
+        <link rel="stylesheet" href="style.css"></style>
         <meta charset="UTF-8"/>
     </head>
     <body>
+        <div id="rps-div">
+            <div id="rps-scores">
+                <span id="rps-winner"></span>
+                <span id="scores-label">Scores:</span>
+                <span id="rps-player-score" class="player"></span>
+                <span id="rps-computer-score" class="computer"></span>    
+            </div>
+            <span class="player player-label">Player</span>
+            <div id="rps-buttons" class="rps-buttons player">
+                <button id="rock">Rock</button>
+                <button id="paper">Paper</button>
+                <button id="scissors">Scissors</button>
+            </div>
+            <span class="computer player-label">Computer</span>
+            <div id="rps-computer-buttons" class="rps-buttons computer">
+                <button id="computer-rock" disabled>Rock</button>
+                <button id="computer-paper" disabled>Paper</button>
+                <button id="computer-scissors" disabled>Scissors</button>
+            </div>
+            <span id="rps-result">Placeholder</span>
+        </div>
+
         <script src="script.js"></script>
     </body>
 </html>
