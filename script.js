@@ -86,7 +86,8 @@ function rpsButtonClicked(e) {
     clearButtons();
 
     this.classList.add("button-selected");
-    const computerButton = document.getElementById(`computer-${computerSelection.toLowerCase()}`)
+    const computerButton = document.getElementById(
+        `computer-${computerSelection.toLowerCase()}`)
     computerButton.classList.add("button-selected");
 
     if(result.indexOf("You Win! ") != -1) playerScore++;
